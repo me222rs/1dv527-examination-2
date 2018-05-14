@@ -1,0 +1,417 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Examination 2",
+		"_postman_id": "cba5b965-57c9-6d18-2421-cd8f60821f17",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create a new user",
+			"request": {
+				"url": "https://localhost:8081/api/user/create",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "Arne",
+							"type": "text",
+							"enabled": true
+						},
+						{
+							"key": "password",
+							"value": "password",
+							"type": "text",
+							"enabled": true
+						}
+					]
+				},
+				"description": "Create a user with a name and password"
+			},
+			"response": []
+		},
+		{
+			"name": "Create a user that already exists",
+			"request": {
+				"url": "https://localhost:8081/api/user/create",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "Arne",
+							"type": "text",
+							"enabled": true
+						},
+						{
+							"key": "password",
+							"value": "password",
+							"type": "text",
+							"enabled": true
+						}
+					]
+				},
+				"description": "Try to create a user that already exists. Make sure user Arne is created."
+			},
+			"response": []
+		},
+		{
+			"name": "Get one catch by id",
+			"request": {
+				"url": "https://localhost:8081/api/catch/one/0",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": "Get a catch by its id."
+			},
+			"response": []
+		},
+		{
+			"name": "Authenticate a user",
+			"request": {
+				"url": "https://localhost:8081/api/user/auth",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "Arne",
+							"type": "text",
+							"enabled": true
+						},
+						{
+							"key": "password",
+							"value": "password",
+							"type": "text",
+							"enabled": true
+						}
+					]
+				},
+				"description": "Authenticate a user. The token given will only be valid for a short time. "
+			},
+			"response": []
+		},
+		{
+			"name": "Try to authenticate with a user that do not exist",
+			"request": {
+				"url": "https://localhost:8081/api/user/auth",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "Fakeuser",
+							"type": "text",
+							"enabled": true
+						},
+						{
+							"key": "password",
+							"value": "password",
+							"type": "text",
+							"enabled": true
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Try to authenticate with wrong password",
+			"request": {
+				"url": "https://localhost:8081/api/user/auth",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "Arne",
+							"type": "text",
+							"enabled": true
+						},
+						{
+							"key": "password",
+							"value": "afafpbfsddkfb",
+							"type": "text",
+							"enabled": true
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get all catches",
+			"request": {
+				"url": "https://localhost:8081/api/catch/all",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": "Gets all of the catches"
+			},
+			"response": []
+		},
+		{
+			"name": "Register a webhook",
+			"request": {
+				"url": "https://localhost:8081/api/webhook/register",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"description": ""
+					},
+					{
+						"key": "x-access-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyIkX18iOnsic3RyaWN0TW9kZSI6dHJ1ZSwiZ2V0dGVycyI6e30sIndhc1BvcHVsYXRlZCI6ZmFsc2UsImFjdGl2ZVBhdGhzIjp7InBhdGhzIjp7ImlzQWRtaW4iOiJpbml0IiwicGFzc3dvcmQiOiJpbml0IiwibmFtZSI6ImluaXQiLCJfX3YiOiJpbml0IiwiX2lkIjoiaW5pdCJ9LCJzdGF0ZXMiOnsiaWdub3JlIjp7fSwiZGVmYXVsdCI6e30sImluaXQiOnsiX192Ijp0cnVlLCJpc0FkbWluIjp0cnVlLCJwYXNzd29yZCI6dHJ1ZSwibmFtZSI6dHJ1ZSwiX2lkIjp0cnVlfSwibW9kaWZ5Ijp7fSwicmVxdWlyZSI6e319LCJzdGF0ZU5hbWVzIjpbInJlcXVpcmUiLCJtb2RpZnkiLCJpbml0IiwiZGVmYXVsdCIsImlnbm9yZSJdfSwiZW1pdHRlciI6eyJkb21haW4iOm51bGwsIl9ldmVudHMiOnt9LCJfZXZlbnRzQ291bnQiOjAsIl9tYXhMaXN0ZW5lcnMiOjB9fSwiaXNOZXciOmZhbHNlLCJfZG9jIjp7ImlzQWRtaW4iOiJmYWxzZSIsIl9fdiI6MCwicGFzc3dvcmQiOiIkMmEkMTAka3RaRmRyemJ5MnZCSk5EZmZEOHNiZVVCRldLTUxkWGJvR3h5M3JUbEdaTTYvbWJtdWJQVlciLCJuYW1lIjoiQXJuZSIsIl9pZCI6IjU4YWFiM2IwODk4YzY4MDUyOGE1NjhhOSJ9LCJpYXQiOjE0ODc1ODI3MjQsImV4cCI6MTQ4NzU4NDE2NH0.QMmEElpKiP4tMhpGBh_5Flck13Ml_wWeSO8QR5LHT_g",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "payloadURL",
+							"value": "www.example.com",
+							"type": "text",
+							"enabled": true
+						}
+					]
+				},
+				"description": "Adds a webhook. The application will send a payload to the url."
+			},
+			"response": []
+		},
+		{
+			"name": "Add a new catch",
+			"request": {
+				"url": "https://localhost:8081/api/catch/add",
+				"method": "POST",
+				"header": [
+					{
+						"key": "x-access-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyIkX18iOnsic3RyaWN0TW9kZSI6dHJ1ZSwiZ2V0dGVycyI6e30sIndhc1BvcHVsYXRlZCI6ZmFsc2UsImFjdGl2ZVBhdGhzIjp7InBhdGhzIjp7ImlzQWRtaW4iOiJpbml0IiwicGFzc3dvcmQiOiJpbml0IiwibmFtZSI6ImluaXQiLCJfX3YiOiJpbml0IiwiX2lkIjoiaW5pdCJ9LCJzdGF0ZXMiOnsiaWdub3JlIjp7fSwiZGVmYXVsdCI6e30sImluaXQiOnsiX192Ijp0cnVlLCJpc0FkbWluIjp0cnVlLCJwYXNzd29yZCI6dHJ1ZSwibmFtZSI6dHJ1ZSwiX2lkIjp0cnVlfSwibW9kaWZ5Ijp7fSwicmVxdWlyZSI6e319LCJzdGF0ZU5hbWVzIjpbInJlcXVpcmUiLCJtb2RpZnkiLCJpbml0IiwiZGVmYXVsdCIsImlnbm9yZSJdfSwiZW1pdHRlciI6eyJkb21haW4iOm51bGwsIl9ldmVudHMiOnt9LCJfZXZlbnRzQ291bnQiOjAsIl9tYXhMaXN0ZW5lcnMiOjB9fSwiaXNOZXciOmZhbHNlLCJfZG9jIjp7ImlzQWRtaW4iOiJmYWxzZSIsIl9fdiI6MCwicGFzc3dvcmQiOiIkMmEkMTAka3RaRmRyemJ5MnZCSk5EZmZEOHNiZVVCRldLTUxkWGJvR3h5M3JUbEdaTTYvbWJtdWJQVlciLCJuYW1lIjoiQXJuZSIsIl9pZCI6IjU4YWFiM2IwODk4YzY4MDUyOGE1NjhhOSJ9LCJpYXQiOjE0ODc3NTQ2ODcsImV4cCI6MTQ4Nzc1NjEyN30.Xau25FrMCyua3GG2CDxXhJ3bDcMgZqoaWjiqFeOqVUw",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "position",
+							"value": "+90.0, -127.554334",
+							"type": "text",
+							"enabled": true
+						},
+						{
+							"key": "specie",
+							"value": "Haj",
+							"type": "text",
+							"enabled": true
+						},
+						{
+							"key": "weight",
+							"value": "400",
+							"type": "text",
+							"enabled": true
+						},
+						{
+							"key": "length",
+							"value": "2",
+							"type": "text",
+							"enabled": true
+						},
+						{
+							"key": "imageUrl",
+							"value": "haj.jpg",
+							"type": "text",
+							"enabled": true
+						},
+						{
+							"key": "other",
+							"value": "Text här",
+							"type": "text",
+							"enabled": true
+						},
+						{
+							"key": "description",
+							"value": "bla bla bla test",
+							"type": "text",
+							"enabled": true
+						}
+					]
+				},
+				"description": "Add a catch. Remember that the position must be a valid coordinate, for example: +90.0, -127.554334\n"
+			},
+			"response": []
+		},
+		{
+			"name": "Update a catch",
+			"request": {
+				"url": "https://localhost:8081/api/catch/update/20",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "x-access-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyIkX18iOnsic3RyaWN0TW9kZSI6dHJ1ZSwiZ2V0dGVycyI6e30sIndhc1BvcHVsYXRlZCI6ZmFsc2UsImFjdGl2ZVBhdGhzIjp7InBhdGhzIjp7ImlzQWRtaW4iOiJpbml0IiwicGFzc3dvcmQiOiJpbml0IiwibmFtZSI6ImluaXQiLCJfX3YiOiJpbml0IiwiX2lkIjoiaW5pdCJ9LCJzdGF0ZXMiOnsiaWdub3JlIjp7fSwiZGVmYXVsdCI6e30sImluaXQiOnsiX192Ijp0cnVlLCJpc0FkbWluIjp0cnVlLCJwYXNzd29yZCI6dHJ1ZSwibmFtZSI6dHJ1ZSwiX2lkIjp0cnVlfSwibW9kaWZ5Ijp7fSwicmVxdWlyZSI6e319LCJzdGF0ZU5hbWVzIjpbInJlcXVpcmUiLCJtb2RpZnkiLCJpbml0IiwiZGVmYXVsdCIsImlnbm9yZSJdfSwiZW1pdHRlciI6eyJkb21haW4iOm51bGwsIl9ldmVudHMiOnt9LCJfZXZlbnRzQ291bnQiOjAsIl9tYXhMaXN0ZW5lcnMiOjB9fSwiaXNOZXciOmZhbHNlLCJfZG9jIjp7ImlzQWRtaW4iOiJmYWxzZSIsIl9fdiI6MCwicGFzc3dvcmQiOiIkMmEkMTAka3RaRmRyemJ5MnZCSk5EZmZEOHNiZVVCRldLTUxkWGJvR3h5M3JUbEdaTTYvbWJtdWJQVlciLCJuYW1lIjoiQXJuZSIsIl9pZCI6IjU4YWFiM2IwODk4YzY4MDUyOGE1NjhhOSJ9LCJpYXQiOjE0ODc3NTYwODMsImV4cCI6MTQ4Nzc1NzUyM30.B53ldPivlvtmmnW4GE8ylIlbrL0IcoS2TKxk_gVCLcA",
+						"description": ""
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "position",
+							"value": "+90.0, -127.554334",
+							"type": "text",
+							"enabled": true
+						},
+						{
+							"key": "specie",
+							"value": "Old boot",
+							"type": "text",
+							"enabled": true
+						},
+						{
+							"key": "weight",
+							"value": "40",
+							"type": "text",
+							"enabled": true
+						},
+						{
+							"key": "length",
+							"value": "1",
+							"type": "text",
+							"enabled": true
+						},
+						{
+							"key": "imageUrl",
+							"value": "oldboot.jpg",
+							"type": "text",
+							"enabled": true
+						},
+						{
+							"key": "other",
+							"value": "Some other text 123",
+							"type": "text",
+							"enabled": true
+						},
+						{
+							"key": "description",
+							"value": "Some description text 133",
+							"type": "text",
+							"enabled": true
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Try to delete without a token",
+			"request": {
+				"url": "https://localhost:8081/api/catch/delete/0",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": "Delete without a token"
+			},
+			"response": []
+		},
+		{
+			"name": "Try to delete with a non valid token",
+			"request": {
+				"url": "https://localhost:8081/api/catch/delete/0",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "x-access-token",
+						"value": "thisisnotavalidtoken",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Delete a catch",
+			"request": {
+				"url": "https://localhost:8081/api/catch/delete/0",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "x-access-token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyIkX18iOnsic3RyaWN0TW9kZSI6dHJ1ZSwiZ2V0dGVycyI6e30sIndhc1BvcHVsYXRlZCI6ZmFsc2UsImFjdGl2ZVBhdGhzIjp7InBhdGhzIjp7ImlzQWRtaW4iOiJpbml0IiwicGFzc3dvcmQiOiJpbml0IiwibmFtZSI6ImluaXQiLCJfX3YiOiJpbml0IiwiX2lkIjoiaW5pdCJ9LCJzdGF0ZXMiOnsiaWdub3JlIjp7fSwiZGVmYXVsdCI6e30sImluaXQiOnsiX192Ijp0cnVlLCJpc0FkbWluIjp0cnVlLCJwYXNzd29yZCI6dHJ1ZSwibmFtZSI6dHJ1ZSwiX2lkIjp0cnVlfSwibW9kaWZ5Ijp7fSwicmVxdWlyZSI6e319LCJzdGF0ZU5hbWVzIjpbInJlcXVpcmUiLCJtb2RpZnkiLCJpbml0IiwiZGVmYXVsdCIsImlnbm9yZSJdfSwiZW1pdHRlciI6eyJkb21haW4iOm51bGwsIl9ldmVudHMiOnt9LCJfZXZlbnRzQ291bnQiOjAsIl9tYXhMaXN0ZW5lcnMiOjB9fSwiaXNOZXciOmZhbHNlLCJfZG9jIjp7ImlzQWRtaW4iOiJmYWxzZSIsIl9fdiI6MCwicGFzc3dvcmQiOiIkMmEkMTAka3RaRmRyemJ5MnZCSk5EZmZEOHNiZVVCRldLTUxkWGJvR3h5M3JUbEdaTTYvbWJtdWJQVlciLCJuYW1lIjoiQXJuZSIsIl9pZCI6IjU4YWFiM2IwODk4YzY4MDUyOGE1NjhhOSJ9LCJpYXQiOjE0ODc2NjE5ODQsImV4cCI6MTQ4NzY2MzQyNH0.Mff_xD0eqVz4ekEyf3CmIx1GN323Ua_BjQiyk88nC-4",
+						"description": ""
+					}
+				],
+				"body": {},
+				"description": "Deletes a catch by id"
+			},
+			"response": []
+		}
+	]
+}
